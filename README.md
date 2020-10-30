@@ -1,24 +1,64 @@
-# README
+#テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+＃＃usersテーブル
+| Column         | Type    | Options                        |
+| -------------- | ------- | ------------------------------ |
+| nickname       | string  | null: false, foreign_key: true |
+| email          | string  | null: false, foreign_key: true |
+| password       | string  | null: false, foreign_key: true |
+| first_name     | string  | null: false, foreign_key: true |
+| last_name      | string  | null: false, foreign_key: true |
+| first_name_jap | string  | null: false, foreign_key: true |
+| last_name_jap  | string  | null: false, foreign_key: true |
+| birthday       | integer | null: false, foreign_key: true | pulldown
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+- has_many :items
+- has_many :credit_cards
+- belongs_to :address
 
-* System dependencies
+＃＃itemsテーブル
+| Column    | Type    | Options                        |
+| --------- | ------- | ------------------------------ |
+| item_name | string  | null: false, foreign_key: true |
+| detail    | text    | null: false, foreign_key: true |
+| category  | string  | null: false, foreign_key: true | pulldown
+| condition | string  | null: false, foreign_key: true | pulldown
+| ship_cost | string  | null: false, foreign_key: true | pulldown
+| ship_pref | string  | null: false, foreign_key: true | pulldown
+| ship_day  | string  | null: false, foreign_key: true | pulldown
+| price     | integer | null: false, foreign_key: true |
 
-* Configuration
+### Association
 
-* Database creation
+- belongs_to :credit_card
+- belongs_to :user
 
-* Database initialization
+＃＃credit_cardテーブル
+| Column   | Type    | Options                        |
+| -------- | ------- | ------------------------------ |
+| card_num | integer | null: false, foreign_key: true |
+| month    | integer | null: false, foreign_key: true |
+| year     | integer | null: false, foreign_key: true |
+| sec_cord | integer | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
+- has_many :addresses
+- has_many :items
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
+＃＃addressesテーブル
+| Column    | Type    | Options                        |
+| --------- | ------- | ------------------------------ |
+| post_num  | integer | null: false, foreign_key: true |
+| pref      | string  | null: false, foreign_key: true | pulldown
+| city      | string  | null: false, foreign_key: true |
+| house_num | string  | null: false, foreign_key: true |
+| building  | string  | null: false, foreign_key: true |
+| tel       | integer | null: false, foreign_key: true | pulldown
 
-* Deployment instructions
+### Association
 
-* ...
+- belongs_to :credit_card
+- belongs_to :user
