@@ -13,9 +13,8 @@
 | birthday           | date    | null: false |
 
 ### Association
-
 - has_many :items
-- has_many :information
+- has_many :informations
 - belongs_to :address
 
 ＃＃itemsテーブル
@@ -32,8 +31,8 @@
 | price        | integer | null: false |
 
 ### Association
-
 - belongs_to :user
+- belongs_to :information
 
 ＃＃addressesテーブル
 | Column    | Type    | Options     |
@@ -47,18 +46,18 @@
 | tel       | string  | null: false |
 
 ### Association
-
 - belongs_to :user
+- belongs_to :information
 
 ＃＃informationテーブル
 | Column  | Type    | Options     |
 | ------- | ------- | ------------|
 | date    | date    | null: false |
 | item_id | integer | null: false |
-| user_id | string  | null: false |
+| user_id | integer | null: false |
 
 
 ### Association
-
 - belongs_to :user
-- has_one :item
+- belongs_to :item
+- belongs_to :address
