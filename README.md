@@ -18,43 +18,41 @@
 - belongs_to :address
 
 ＃＃itemsテーブル
-| Column       | Type    | Options     |
-| ------------ | ------- | ----------- |
-| user_id      | integer | null: false |
-| item_name    | string  | null: false |
-| detail       | text    | null: false |
-| category_id  | integer | null: false | pulldown
-| condition_id | integer | null: false | pulldown
-| ship_cost_id | integer | null: false | pulldown
-| ship_pref_id | integer | null: false | pulldown
-| ship_day_id  | integer | null: false | pulldown
-| price        | integer | null: false |
+| Column       | Type    | Options                        |
+| ------------ | ------- | ------------------------------ |
+| user_id      | integer | null: false, foreign_key: true |
+| item_name    | string  | null: false                    |
+| detail       | text    | null: false                    |
+| category_id  | integer | null: false                    | pulldown
+| condition_id | integer | null: false                    | pulldown
+| ship_cost_id | integer | null: false                    | pulldown
+| ship_pref_id | integer | null: false                    | pulldown
+| ship_day_id  | integer | null: false                    | pulldown
+| price        | integer | null: false                    |
 
 ### Association
 - belongs_to :user
 - belongs_to :information
 
 ＃＃addressesテーブル
-| Column    | Type    | Options     |
-| --------- | ------- | ------------|
-| user_id   | integer | null: false |
-| post_num  | integer | null: false |
-| pref_id   | string  | null: false | pulldown
-| city      | string  | null: false |
-| house_num | string  | null: false |
-| building  | string  |             |
-| tel       | string  | null: false |
+| Column    | Type    | Options                        |
+| --------- | ------- | -------------------------------|
+| user_id   | integer | null: false, foreign_key: true |
+| post_num  | integer | null: false                    |
+| pref_id   | string  | null: false                    | pulldown
+| city      | string  | null: false                    |
+| house_num | string  | null: false                    |
+| building  | string  |                                |
+| tel       | string  | null: false                    |
 
 ### Association
-- belongs_to :user
 - belongs_to :information
 
 ＃＃informationテーブル
-| Column  | Type    | Options     |
-| ------- | ------- | ------------|
-| date    | date    | null: false |
-| item_id | integer | null: false |
-| user_id | integer | null: false |
+| Column  | Type    | Options                        |
+| ------- | ------- | -------------------------------|
+| item_id | integer | null: false, foreign_key: true |
+| user_id | integer | null: false, foreign_key: true |
 
 
 ### Association
