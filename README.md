@@ -1,64 +1,64 @@
 #テーブル設計
 
 ＃＃usersテーブル
-| Column         | Type    | Options                        |
-| -------------- | ------- | ------------------------------ |
-| nickname       | string  | null: false, foreign_key: true |
-| email          | string  | null: false, foreign_key: true |
-| password       | string  | null: false, foreign_key: true |
-| first_name     | string  | null: false, foreign_key: true |
-| last_name      | string  | null: false, foreign_key: true |
-| first_name_jap | string  | null: false, foreign_key: true |
-| last_name_jap  | string  | null: false, foreign_key: true |
-| birthday       | integer | null: false, foreign_key: true | pulldown
+| Column             | Type    | Options     |
+| --------------     | ------- | ----------- |
+| nickname           | string  | null: false |
+| email              | string  | null: false |
+| encrypted_password | string  | null: false |
+| first_name         | string  | null: false |
+| last_name          | string  | null: false |
+| first_name_jap     | string  | null: false |
+| last_name_jap      | string  | null: false |
+| birthday           | date    | null: false |
 
 ### Association
 
 - has_many :items
-- has_many :credit_cards
+- has_many :information
 - belongs_to :address
 
 ＃＃itemsテーブル
-| Column    | Type    | Options                        |
-| --------- | ------- | ------------------------------ |
-| item_name | string  | null: false, foreign_key: true |
-| detail    | text    | null: false, foreign_key: true |
-| category  | string  | null: false, foreign_key: true | pulldown
-| condition | string  | null: false, foreign_key: true | pulldown
-| ship_cost | string  | null: false, foreign_key: true | pulldown
-| ship_pref | string  | null: false, foreign_key: true | pulldown
-| ship_day  | string  | null: false, foreign_key: true | pulldown
-| price     | integer | null: false, foreign_key: true |
+| Column       | Type    | Options     |
+| ------------ | ------- | ----------- |
+| user_id      | integer | null: false |
+| item_name    | string  | null: false |
+| detail       | text    | null: false |
+| category_id  | integer | null: false | pulldown
+| condition_id | integer | null: false | pulldown
+| ship_cost_id | integer | null: false | pulldown
+| ship_pref_id | integer | null: false | pulldown
+| ship_day_id  | integer | null: false | pulldown
+| price        | integer | null: false |
 
 ### Association
 
-- belongs_to :credit_card
-- belongs_to :user
-
-＃＃credit_cardテーブル
-| Column   | Type    | Options                        |
-| -------- | ------- | ------------------------------ |
-| card_num | integer | null: false, foreign_key: true |
-| month    | integer | null: false, foreign_key: true |
-| year     | integer | null: false, foreign_key: true |
-| sec_cord | integer | null: false, foreign_key: true |
-
-### Association
-- has_many :addresses
-- has_many :items
 - belongs_to :user
 
 ＃＃addressesテーブル
-| Column    | Type    | Options                        |
-| --------- | ------- | ------------------------------ |
-| post_num  | integer | null: false, foreign_key: true |
-| pref      | string  | null: false, foreign_key: true | pulldown
-| city      | string  | null: false, foreign_key: true |
-| house_num | string  | null: false, foreign_key: true |
-| building  | string  | null: false, foreign_key: true |
-| tel       | integer | null: false, foreign_key: true | pulldown
+| Column    | Type    | Options     |
+| --------- | ------- | ------------|
+| user_id   | integer | null: false |
+| post_num  | integer | null: false |
+| pref_id   | string  | null: false | pulldown
+| city      | string  | null: false |
+| house_num | string  | null: false |
+| building  | string  |             |
+| tel       | string  | null: false |
 
 ### Association
 
-- belongs_to :credit_card
 - belongs_to :user
+
+＃＃informationテーブル
+| Column  | Type    | Options     |
+| ------- | ------- | ------------|
+| date    | date    | null: false |
+| item_id | integer | null: false |
+| user_id | string  | null: false |
+
+
+### Association
+
+- belongs_to :user
+- has_one :item
