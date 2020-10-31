@@ -15,7 +15,6 @@
 ### Association
 - has_many :items
 - has_many :informations
-- belongs_to :address
 
 ＃＃itemsテーブル
 | Column       | Type    | Options                        |
@@ -32,18 +31,18 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :information
+- has_one    :information
 
 ＃＃addressesテーブル
-| Column    | Type    | Options                        |
-| --------- | ------- | -------------------------------|
-| user_id   | integer | null: false, foreign_key: true |
-| post_num  | integer | null: false                    |
-| pref_id   | string  | null: false                    | pulldown
-| city      | string  | null: false                    |
-| house_num | string  | null: false                    |
-| building  | string  |                                |
-| tel       | string  | null: false                    |
+| Column         | Type    | Options                        |
+| -------------- | ------- | -------------------------------|
+| information_id | integer | null: false, foreign_key: true |
+| post_num       | integer | null: false                    |
+| pref_id        | string  | null: false                    | pulldown
+| city           | string  | null: false                    |
+| house_num      | string  | null: false                    |
+| building       | string  |                                |
+| tel            | string  | null: false                    |
 
 ### Association
 - belongs_to :information
