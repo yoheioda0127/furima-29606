@@ -1,24 +1,60 @@
-# README
+#テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+＃＃usersテーブル
+| Column             | Type    | Options     |
+| --------------     | ------- | ----------- |
+| nickname           | string  | null: false |
+| email              | string  | null: false |
+| encrypted_password | string  | null: false |
+| first_name         | string  | null: false |
+| last_name          | string  | null: false |
+| first_name_jap     | string  | null: false |
+| last_name_jap      | string  | null: false |
+| birthday           | date    | null: false |
 
-Things you may want to cover:
+### Association
+- has_many :items
+- has_many :informations
 
-* Ruby version
+＃＃itemsテーブル
+| Column       | Type    | Options                        |
+| ------------ | ------- | ------------------------------ |
+| user_id      | integer | null: false, foreign_key: true |
+| item_name    | string  | null: false                    |
+| detail       | text    | null: false                    |
+| category_id  | integer | null: false                    | pulldown
+| condition_id | integer | null: false                    | pulldown
+| ship_cost_id | integer | null: false                    | pulldown
+| ship_pref_id | integer | null: false                    | pulldown
+| ship_day_id  | integer | null: false                    | pulldown
+| price        | integer | null: false                    |
 
-* System dependencies
+### Association
+- belongs_to :user
+- has_one    :information
 
-* Configuration
+＃＃addressesテーブル
+| Column         | Type    | Options                        |
+| -------------- | ------- | -------------------------------|
+| information_id | integer | null: false, foreign_key: true |
+| post_num       | integer | null: false                    |
+| pref_id        | string  | null: false                    | pulldown
+| city           | string  | null: false                    |
+| house_num      | string  | null: false                    |
+| building       | string  |                                |
+| tel            | string  | null: false                    |
 
-* Database creation
+### Association
+- belongs_to :information
 
-* Database initialization
+＃＃informationテーブル
+| Column  | Type    | Options                        |
+| ------- | ------- | -------------------------------|
+| item_id | integer | null: false, foreign_key: true |
+| user_id | integer | null: false, foreign_key: true |
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :user
+- belongs_to :item
+- has_one    :address
