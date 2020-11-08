@@ -16,7 +16,7 @@ describe User do
       it "passwordが6文字以上であれば登録できる" do
         @user.password = "000000"
         @user.password_confirmation = "000000"
-        expect(@user).to_bevalid
+        expect(@user).to be_valid
       end
     end
 
@@ -24,7 +24,7 @@ describe User do
       it "nicknameが空だと登録できない" do
         @user.nickname = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Nickname cant be blank")
+        expect(@user.errors.full_messages).to include("Nickname can't be blank")
       end
       it "nicknameが7文字以上であれば登録できない" do
         @user.nickname = "aaaaaaa"
@@ -32,7 +32,7 @@ describe User do
         expect(@user.errors.full_messages).to include("Nickname is too long (maximum is 6 characters)")
       end
       it "emailが空では登録できない" do
-        @user.email = ""
+        @user.email = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
@@ -46,17 +46,18 @@ describe User do
       it "passwordが空では登録できない" do
         @user.password = ""
         @user.valid?
-        expect(@user.errors.full_messages).to include("password can't be blank")
+        expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it "passwordが5文字以下であれば登録できない" do
-        @userpassword = "00000"
+        @user.password = "00000"
         @user.password_confirmation = "00000"
-        @user.valid?expect(@user.errprs.fullmessages).to include("Password is too short (minimum is 6 cheracters)")
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
       it "passwordが存在してもpassword_confirmationが空では登録できない" do
         @user.password_confirmation = ""
         @user.valid?
-        expect(@user.errors.fullmessages).to include("Password confirmation dosen't mach Password")
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
     end
   end
