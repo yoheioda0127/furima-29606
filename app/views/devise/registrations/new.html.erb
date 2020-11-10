@@ -1,7 +1,7 @@
-<%= render "shared/second-header"%>
+<%= render partial: "/shared/second-header" %>
 
 <%# 「モデル名」にはUserモデルであれば@userを渡しましょう。「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/registrations#createへのパスを確認し、記載してください。 %>
-<%= form_with model: モデル名, url: 新規登録機能へのパス, class: 'registration-main', local: true do |f| %>
+<%= form_with model: @user, url: '/users', class: 'registration-main', local: true do |f| %>
 <%# //「モデル名」にはUserモデルであれば@userを渡しましょう。「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/registrations#createへのパスを確認し、記載してください。 %>
 <div class='form-wrap'>
   <div class='form-header'>
@@ -11,7 +11,7 @@
   </div>
 
   <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-  <%# render 'shared/error_messages', model: f.object %>
+  <%= render 'shared/error_messages', model: f.object %>
   <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
   <div class="form-group">
@@ -99,10 +99,10 @@
     </h2>
   </div>
   <div class='register-btn'>
-    <%= f.submit "会員登録" ,class:"register-red-btn" %>
+    <%= f.submit "会員登録",class:"register-red-btn" %>
   </div>
   <p class='register-info'>本人情報の登録について</p>
 </div>
 <% end %>
 
-<%= render "shared/second-footer"%>
+<%= render "/shared/second-footer"%>
