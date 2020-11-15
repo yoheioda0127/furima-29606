@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  #resources :users_sign_out, :only: [:index] do
 
   private
   def configure_permitted_parameters
