@@ -117,6 +117,12 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana は全角カタカナを使用してください！！")
       end
+
+      it "birthdayが空だと登録できない" do
+        @user.birthday = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Birthday can't be blank")
+      end
     end
   end
 end
