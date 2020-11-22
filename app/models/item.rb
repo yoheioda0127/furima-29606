@@ -1,7 +1,8 @@
 class Item < ApplicationRecord
-  
-  belongs_to  :user
-  has_one     :information
+
+  belongs_to       :user
+  has_one          :information
+  has_one_attached :image 
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: 'は必須内容です！！' } do
     validates :item_name
@@ -17,5 +18,4 @@ class Item < ApplicationRecord
   end
 
   validates   :price, presence: true, inclusion: {in: 300..9999999 } , format: { message: 'は¥300~¥9,999,999です！！' }
-
 end
