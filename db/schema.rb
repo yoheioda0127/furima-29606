@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2020_11_21_014909) do
     t.integer "ship_pref_id", null: false
     t.integer "ship_day_id", null: false
     t.integer "price", null: false
-    t.text "image", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

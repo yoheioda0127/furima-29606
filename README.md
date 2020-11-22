@@ -28,7 +28,6 @@
 | ship_pref_id | integer | null: false                    | pulldown
 | ship_day_id  | integer | null: false                    | pulldown
 | price        | integer | null: false                    |
-| image        | text    | null: false                    |
 
 ### Association
 - belongs_to :user
