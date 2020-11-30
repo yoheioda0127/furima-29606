@@ -54,9 +54,19 @@ describe Item do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it "priceが300円以下では保存できない" do
-        @item.price = "200"
+        @item.price = "299"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not included in the list")
+      end
+      it "priceが9999999円以上では保存できない" do
+        @item.price = "10000000"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not included in the list")
+      end
+      it "category_idは1では保存できない" do
+        @item.category_id = "1"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category の選択を行ってください！！")
       end
     end
   end

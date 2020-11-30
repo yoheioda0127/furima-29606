@@ -9,9 +9,6 @@ function calculation(){
 
     const profit = document.getElementById("profit");
     profit.innerHTML = Math.floor(inputValue * 0.9);
-
-    console.log(inputValue);
   })
 }
-
 window.addEventListener('load',calculation)

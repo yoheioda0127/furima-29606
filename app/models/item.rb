@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   with_options presence: {message: 'は必須内容です！！' } do
+    validates :image
     validates :item_name
     validates :detail
   end
