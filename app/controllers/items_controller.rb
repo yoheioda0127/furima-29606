@@ -5,6 +5,14 @@ class ItemsController < ApplicationController
   def index
     @items = Item.includes(:user).order("created_at DESC")
   end
+
+  def update
+    if @item.update(item_params)
+      redirect_to action: :show
+    else
+      render :edit
+    end
+  end
   
   def new
     @item = Item.new
@@ -25,14 +33,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def update
-    if @item.update(item_params)
-      redirect_to action: :show
-    else
-      render :edit
-    end
-  end
-
   def show
   end
 
@@ -43,8 +43,6 @@ class ItemsController < ApplicationController
       @item.destroy
       redirect_to action: :index
     end
-    
-    
   end
 
   private
