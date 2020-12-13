@@ -9,9 +9,9 @@ class AddressInformation
   end
 
   with_options presence: true do
-    validates :post_num,   numericality: { other_than: 0, message: "can't be blank" }
-    validates :house_num,  numericality: { other_than: 0, message: "can't be blank" }
-    validates :tel,        numericality: { other_than: 0, message: "can't be blank" },inclusion: {in: 0000000000..99999999999 } 
+    validates :post_num,   format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: "is invalid. Input full-width characters." }
+    validates :house_num,  format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: "is invalid. Input full-width characters." }
+    validates :tel,        format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: "is invalid. Input full-width characters." }
   end
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: "is invalid. Input full-width characters." } do
