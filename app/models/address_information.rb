@@ -1,6 +1,6 @@
 class AddressInformation
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :post_num, :pref_id, :city, :house_num, :building, :tel
+  attr_accessor :user_id, :item_id, :post_num, :pref_id, :city, :house_num, :building, :tel, :token
   
   with_options presence: true, numericality: { other_than: 1, message: "can't be blank" } do
     validates :user_id
@@ -18,6 +18,8 @@ class AddressInformation
     validates :city
     validates :building
   end
+
+  validates :token, presence: true
 
   def save
     # 住所情報を保存
