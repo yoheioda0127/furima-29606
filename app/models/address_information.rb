@@ -8,7 +8,7 @@ class AddressInformation
     validates :house_num
     validates :pref_id, numericality: { other_than: 1 } 
     validates :post_num, format: { with: /\A\d{3}[-]\d{4}\z/ }
-    validates :tel, numericality: { with: /\A\0\d{9,10}\z/ } 
+    validates :tel, format: { with: /\A0\d{9,10}\z/, message: 'is invalid'} 
   end
 
   def save
