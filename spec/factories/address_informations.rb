@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :address_information do
+    user_id {5}
+    item_id {4}
     token { "JfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDdz09IiwiZXhwIjpudWxsLCJwdXIi" }
     post_num { "205-5544" }
     pref_id { 3 }

@@ -8,7 +8,7 @@ class AddressInformation
     validates :city
     validates :token
     validates :house_num
-    validates :pref_id, numericality: { other_than: 1 } 
+    validates :pref_id, numericality: { other_than: 0 } 
     validates :post_num, format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :tel, format: { with: /\A0\d{9,10}\z/, message: 'is invalid'} 
   end

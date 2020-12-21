@@ -10,6 +10,7 @@ RSpec.describe AddressInformation, type: :model do
       expect(@address_information).to be_valid
     end
     it 'buildingが空でも保存できること' do
+      @address_information.building = nil
       expect(@address_information).to be_valid
     end
 
@@ -19,15 +20,10 @@ RSpec.describe AddressInformation, type: :model do
       @address_information.valid?
       expect(@address_information.errors.full_messages).to include("Post num can't be blank")
     end
-    it 'pref_idが空だと保存できないこと' do
-      @address_information.pref_id = nil
+    it 'pref_idが0だと保存できないこと' do
+      @address_information.pref_id = 0
       @address_information.valid?
-      expect(@address_information.errors.full_messages).to include("Pref can't be blank")
-    end
-    it 'pref_idが1だと保存できないこと' do
-      @address_information.pref_id = 1
-      @address_information.valid?
-      expect(@address_information.errors.full_messages).to include("Pref must be other than 1")
+      expect(@address_information.errors.full_messages).to include("Pref must be other than 0")
     end
     it 'cityが空だと保存できないこと' do
       @address_information.city = nil

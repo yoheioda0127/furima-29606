@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @order = AddressInformation.new
-    if set_find.user_id == current_user.id || set_find.information != nil
+    if @item.user_id == current_user.id || @item.information != nil
       redirect_to items_path
     end
   end
