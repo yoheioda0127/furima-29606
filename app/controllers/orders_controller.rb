@@ -1,13 +1,18 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_find, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
+    set_find
     @order = AddressInformation.new
+    if set_find.user_id == current_user.id || set_find.information != nil
+      redirect_to items_path
+    end
   end
 
   def create
     @order = AddressInformation.new(order_params)
-    @item = Item.find(params[:item_id])
+    set_find
     if user_signed_in?
       if @order.valid?
         pay_item
@@ -23,6 +28,10 @@ class OrdersController < ApplicationController
   
   private
 
+  def set_find
+    @item = Item.find(params[:item_id])
+  end
+
   def order_params
     params.permit(:item_id,:post_num, :pref_id, :city, :house_num, :building, :tel).merge(token: params[:token],user_id: current_user.id)
   end
@@ -35,5 +44,4 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
-
 end

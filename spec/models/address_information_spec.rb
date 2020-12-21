@@ -24,6 +24,11 @@ RSpec.describe AddressInformation, type: :model do
       @address_information.valid?
       expect(@address_information.errors.full_messages).to include("Pref can't be blank")
     end
+    it 'pref_idが1だと保存できないこと' do
+      @address_information.pref_id = 1
+      @address_information.valid?
+      expect(@address_information.errors.full_messages).to include("Pref must be other than 1")
+    end
     it 'cityが空だと保存できないこと' do
       @address_information.city = nil
       @address_information.valid?
