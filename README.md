@@ -38,7 +38,7 @@
 | -------------- | ------- | -------------------------------|
 | information_id | integer | null: false, foreign_key: true |
 | post_num       | integer | null: false                    |
-| pref_id        | string  | null: false                    | pulldown
+| pref_id        | integer | null: false                    | pulldown
 | city           | string  | null: false                    |
 | house_num      | string  | null: false                    |
 | building       | string  |                                |

@@ -11,4 +11,4 @@ function calculation(){
     profit.innerHTML = Math.floor(inputValue * 0.9);
   })
 }
-window.addEventListener('load',calculation)
+window.addEventListener('load',calculation);

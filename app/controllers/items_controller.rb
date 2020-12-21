@@ -5,6 +5,14 @@ class ItemsController < ApplicationController
   def index
     @items = Item.includes(:user).order("created_at DESC")
   end
+
+  def update
+    if @item.update(item_params)
+      redirect_to action: :show
+    else
+      render :edit
+    end
+  end
   
   def new
     @item = Item.new
@@ -20,16 +28,8 @@ class ItemsController < ApplicationController
   end
   
   def edit
-    if @item.user_id != current_user.id
+    if @item.user_id != current_user.id || @item.information.present?
       redirect_to action: :index
-    end
-  end
-
-  def update
-    if @item.update(item_params)
-      redirect_to action: :show
-    else
-      render :edit
     end
   end
 
@@ -37,14 +37,12 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.user_id != current_user.id 
+    if @item.user_id != current_user.id
       redirect_to action: :index
     else
       @item.destroy
       redirect_to action: :index
     end
-    
-    
   end
 
   private
@@ -58,7 +56,7 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:item_name, :detail, :category_id, :condition_id, :ship_cost_id, :ship_pref_id, :ship_day_id, :price, :image).merge(user_id: current_user.id)
   end
-  
+
   def set_item
     @item = Item.find(params[:id])
   end
