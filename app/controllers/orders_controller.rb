@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
   before_action :set_find, only: [:index, :create]
 
   def index
-    set_find
     @order = AddressInformation.new
     if set_find.user_id == current_user.id || set_find.information != nil
       redirect_to items_path
@@ -12,17 +11,12 @@ class OrdersController < ApplicationController
 
   def create
     @order = AddressInformation.new(order_params)
-    set_find
-    if user_signed_in?
-      if @order.valid?
-        pay_item
-        @order.save
-        return redirect_to root_path
-      else
-        render :index
-      end
+    if @order.valid?
+      pay_item
+      @order.save
+      return redirect_to root_path
     else
-      redirect_to root_path
+      render :index
     end
   end
   
