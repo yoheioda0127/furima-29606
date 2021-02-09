@@ -62,10 +62,6 @@ group :development do
   gem 'rubocop', require: false
 end
 
-group :production do
-  gem 'rails_12factor'
-end
-
 gem 'devise'
 
 gem 'pry-rails'
@@ -81,3 +77,7 @@ gem 'payjp'
 gem "aws-sdk-s3", require: false
 
 gem 'rails-i18n'
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
