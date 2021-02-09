@@ -17,3 +17,4 @@ class AddressInformation
     information = Information.create(user_id: user_id, item_id: item_id)
     Address.create(post_num: post_num, pref_id: pref_id, city: city, house_num: house_num, building: building, tel: tel, information_id: information.id)
   end
+end
