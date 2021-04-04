@@ -98,7 +98,7 @@ https://docs.google.com/spreadsheets/d/1kFjJMO3zErLHDZwljewx2ryIPCemJL7kwXFtnNhB
 - has_many :items
 - has_many :informations
 
-＃＃itemsテーブル
+## itemsテーブル
 | Column       | Type    | Options                        |
 | ------------ | ------- | ------------------------------ |
 | user_id      | integer | null: false, foreign_key: true |
@@ -115,7 +115,7 @@ https://docs.google.com/spreadsheets/d/1kFjJMO3zErLHDZwljewx2ryIPCemJL7kwXFtnNhB
 - belongs_to :user
 - has_one    :information
 
-＃＃addressesテーブル
+## addressesテーブル
 | Column         | Type    | Options                        |
 | -------------- | ------- | -------------------------------|
 | information_id | integer | null: false, foreign_key: true |
@@ -129,7 +129,7 @@ https://docs.google.com/spreadsheets/d/1kFjJMO3zErLHDZwljewx2ryIPCemJL7kwXFtnNhB
 ### Association
 - belongs_to :information
 
-＃＃informationテーブル
+## informationテーブル
 | Column  | Type    | Options                        |
 | ------- | ------- | -------------------------------|
 | item_id | integer | null: false, foreign_key: true |
